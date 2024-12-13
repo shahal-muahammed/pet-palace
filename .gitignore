@@ -1,0 +1,48 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Virtual environment directories
+venv/
+env/
+.venv/
+.env/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.db-journal
+
+# Django migrations folder (optional, if not using the database for migrations)
+*/migrations/
+
+# Media files (if you are storing them locally)
+media/
+
+# Static files (if you are not using a dedicated static server like Amazon S3)
+static/
+
+# IDE and editor directories (e.g., VSCode, PyCharm, etc.)
+.vscode/
+.idea/
+
+# System files (macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Python-specific configurations
+*.env
+*.venv
+*.pytest_cache/
+*.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Dependency directories (if using poetry or pipenv)
+Pipfile.lock
+poetry.lock
