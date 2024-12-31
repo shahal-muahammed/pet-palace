@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #fafafa;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4a90e2;
+            outline: none;
+            background-color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4a90e2;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        
+        <form method="POST" action="{% url 'registration' %}">
+            
+            <div class="form-group">
+                <label for="id_full_name">Full Name</label>
+                <input type="text" name="full_name" id="id_full_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="email" name="email" id="email" required>
+            </div>  
+
+             <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_phone">Phone</label>
+                <input type="text" name="phone" id="id_phone" required>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="id_pet_info">Pet Info</label>
+                <textarea name="pet_info" id="id_pet_info" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_address">Address</label>
+                <textarea name="address" id="id_address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="roll">Role</label>
+                <select name="roll" id="roll" required>
+                    <option value="shopowner" {% if form.roll.value == 'shopowner' %}selected{% endif %}>Shop Owner</option>
+                    <option value="petowner" {% if form.roll.value == 'petowner' %}selected{% endif %}>Pet Owner</option>
+                </select>
+            </div>
+        
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

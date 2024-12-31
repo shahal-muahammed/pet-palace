@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Pet Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        /* Floating dots container */
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Ensure no interaction */
+            overflow: hidden;
+            z-index: 0; /* Behind all content */
+        }
+
+        .floating-dots div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 223, 0, 0.8); /* Yellow color */
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20vw);
+                opacity: 0;
+            }
+        }
+
+        /* Generate random positions and animation delays */
+        .floating-dots div:nth-child(1) {
+            left: 10%;
+            animation-duration: 12s;
+            animation-delay: 0s;
+        }
+        .floating-dots div:nth-child(2) {
+            left: 30%;
+            animation-duration: 15s;
+            animation-delay: 2s;
+        }
+        .floating-dots div:nth-child(3) {
+            left: 50%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+        .floating-dots div:nth-child(4) {
+            left: 70%;
+            animation-duration: 8s;
+            animation-delay: 6s;
+        }
+        .floating-dots div:nth-child(5) {
+            left: 90%;
+            animation-duration: 11s;
+            animation-delay: 8s;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            position: relative;
+            z-index: 1; /* Above the dots */
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+        }
+
+        .btn-primary {
+            background-color: #2575fc;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a11cb;
+            box-shadow: 0 5px 10px rgba(106, 17, 203, 0.3);
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Dots -->
+    <div class="floating-dots">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">Pet Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/owner-registration">Pet Owner Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop-registration">Pet Shop Owner Registration</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4" style="width: 100%; max-width: 500px;">
+            <h3 class="text-center mb-4 text-dark">Pet Owner Registration</h3>
+            <form action="/register-owner" method="post">
+                <!-- CSRF Token (Django) -->
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter your contact number" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Already have an account? <a href="/login">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
